@@ -127,7 +127,7 @@ export default function RecruiterQuickMode() {
           {/* Social icons */}
           <div className="grid grid-cols-2 gap-3 font-mono text-xs">
             <a
-              href="https://github.com/piyushprashant"
+              href="https://github.com/Piyu-cyber"
               target="_blank"
               rel="noreferrer"
               className="p-2.5 border border-card-border hover:border-slate-700 rounded bg-[#0B0C0E] text-slate-300 hover:text-white flex items-center justify-center gap-1.5 transition-colors"

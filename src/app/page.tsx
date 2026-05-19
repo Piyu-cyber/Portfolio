@@ -93,7 +93,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://github.com/piyushprashant"
+                  href="https://github.com/Piyu-cyber"
                   target="_blank"
                   rel="noreferrer"
                   className="p-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-slate-300 hover:text-white transition-colors flex items-center justify-center"
