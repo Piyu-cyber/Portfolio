@@ -17,6 +17,16 @@ Welcome! This repository hosts the interactive portfolio dashboard for **Piyush 
 
 ---
 
+## 🖥️ Live Interactive Telemetry & CLI Audits
+
+The portfolio dashboard is not just a static page—it is built to function as an engineering command center:
+* **Interactive CLI Shell:** Run commands (`help`, `neofetch`, `ls`, `cat [file]`, `run [file]`) inside the simulated GPU cluster terminal to execute live data pipelines and view system specifications.
+* **C++ & Python Code Peek Drawers:** Audit the actual C++ ONNX template headers and Python semantic-search cache scripts directly inside the browser window.
+* **Git Branch Commit Tree:** Follow his engineering milestones visualized as a multi-branch Git commit log complete with merge junctions.
+* **Fluctuating Scorecard Telemetry:** Metric dashboards update live with real-time fluctuating load figures and SVG sparkline waveforms representing active system states.
+
+---
+
 ## 🔍 Why Hire Piyush? (The 3-Point Audit)
 
 ### 1. Peer-Reviewed Research Credentials (ACL SemEval-2026)
