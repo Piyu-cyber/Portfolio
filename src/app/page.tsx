@@ -1,101 +1,180 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+import { FileText, ArrowRight } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import StatusBar from "@/components/StatusBar";
+import TerminalDemo from "@/components/TerminalDemo";
+import RecruiterSnapshot from "@/components/RecruiterSnapshot";
+import ProjectsSection from "@/components/ProjectsSection";
+import ResearchLab from "@/components/ResearchLab";
+import EngineeringStack from "@/components/EngineeringStack";
+import Timeline from "@/components/Timeline";
+import RecruiterQuickMode from "@/components/RecruiterQuickMode";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [recruiterMode, setRecruiterMode] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  const trustBarItems = [
+    { label: "ACL SemEval-2026 Author", detail: "22-Language NLP Research" },
+    { label: "CGPA 9.1 / 10.0", detail: "IIIT Dharwad Honours" },
+    { label: "Production RAG Systems", detail: "pgvector + Groq + Cache" },
+    { label: "C++ Inference Engineering", detail: "ONNX Runtime Accelerator" },
+  ];
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    e.preventDefault();
+    const target = document.querySelector(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0B0C0E] text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white">
+      {/* Hidden Recruiter Keywords for Search Engine Crawlers & ATS Parsers */}
+      <div className="sr-only" aria-hidden="true">
+        AI Engineer, ML Engineer, RAG Engineer, Applied AI, LLM Infrastructure, NLP Research, Quant ML, Deep Learning Engineer, Agentic AI, Supabase, pgvector, ONNX, CUDA, PyTorch, C++, Python, Next.js, React
+      </div>
+
+      {/* Navigation */}
+      <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
+
+      {/* Main Container */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 space-y-20">
+        
+        {/* HERO SECTION */}
+        <section className="min-h-[calc(100vh-8rem)] flex flex-col justify-center gap-12 py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Column: Heading and CTAs */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-card-border bg-[#12141C] text-[10px] font-mono text-accent-green tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-ping"></span>
+                systems_engineer_run // ACTIVE
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-extrabold tracking-tight text-white leading-[1.1]">
+                Building Production-Grade{" "}
+                <span className="bg-gradient-to-r from-accent-blue via-accent-cyan to-accent-green bg-clip-text text-transparent">
+                  AI Systems
+                </span>{" "}
+                for the Next Era of Computing
+              </h1>
+
+              <p className="text-sm sm:text-base text-text-muted font-mono leading-relaxed max-w-2xl">
+                B.Tech Data Science & AI student at IIIT Dharwad working on RAG systems, agentic AI pipelines, multilingual ML research, and low-latency inference infrastructure.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  onClick={(e) => handleScrollTo(e, "#projects")}
+                  className="px-5 py-3 rounded bg-white text-[#0B0C0E] hover:bg-slate-200 font-mono font-bold text-xs flex items-center gap-1.5 transition-colors"
+                >
+                  <span>View Projects</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={(e) => handleScrollTo(e, "#research")}
+                  className="px-5 py-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-white font-mono text-xs flex items-center gap-1.5 transition-colors"
+                >
+                  <span>Read Research</span>
+                </button>
+
+                <a
+                  href="/Piyush_Prashant_Resume_Final.docx"
+                  download
+                  className="px-5 py-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-white font-mono text-xs flex items-center gap-1.5 transition-colors"
+                >
+                  <FileText className="w-4 h-4 text-text-muted" />
+                  <span>Resume (docx)</span>
+                </a>
+
+                <a
+                  href="https://github.com/piyushprashant"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-slate-300 hover:text-white transition-colors flex items-center justify-center"
+                  title="GitHub Profile"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Terminal Visual */}
+            <div className="lg:col-span-5 w-full">
+              <TerminalDemo />
+            </div>
+          </div>
+
+          {/* Trust Bar Grid */}
+          <div className="border-t border-card-border pt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 select-none font-mono">
+              {trustBarItems.map((item, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="text-[10px] text-text-muted uppercase font-bold tracking-wider">{"// "}{item.detail}</div>
+                  <div className="text-sm font-bold text-white">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* RECRUITER QUICK SUMMARY PANEL (Conditioned on Recruiter Mode Toggle) */}
+        {recruiterMode && (
+          <section className="animate-in fade-in slide-in-from-top-4 duration-300">
+            <RecruiterQuickMode />
+          </section>
+        )}
+
+        {/* RECRUITER SNAPSHOT SECTION */}
+        <RecruiterSnapshot />
+
+        {/* PROJECTS SECTION */}
+        <ProjectsSection />
+
+        {/* RESEARCH SECTION */}
+        <ResearchLab />
+
+        {/* SKILLS SECTION */}
+        <EngineeringStack />
+
+        {/* TIMELINE SECTION */}
+        <Timeline />
+
+        {/* CURRENTLY EXPLORING CORNER FOOTER */}
+        <section className="bg-[#12141C]/30 border border-card-border rounded-lg p-6 font-mono text-xs select-none">
+          <span className="text-[10px] text-accent-green font-bold block mb-3 uppercase tracking-wide">{"// Currently Exploring:"}</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-slate-300">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-green"></span>
+              <span>AI Infrastructure</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue"></span>
+              <span>Efficient Inference Systems</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-purple"></span>
+              <span>Agentic Workflows</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+              <span>Applied ML Systems</span>
+            </div>
+          </div>
+        </section>
+
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Systems Status Bar footer */}
+      <StatusBar recruiterMode={recruiterMode} />
     </div>
   );
 }
+
