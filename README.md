@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Piyush Prashant // AI & ML Systems Engineer Portfolio
 
-## Getting Started
+A premium, recruiter-focused developer portfolio designed to showcase production-grade AI systems, low-latency deep learning pipelines, and research credentials.
 
-First, run the development server:
+The site is built with a **professional matte black/graphite terminal aesthetic** modeled after modern infrastructure platforms (OpenAI, Anthropic, Stripe, Vercel).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚡ Core Features & Interactive Simulations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. **Live GPU Cluster Node Terminal**
+- Interactive CUDA/RAG simulation terminal dashboard showing hardware statuses (fluctuating GPU load, VRAM allocations).
+- Run simulated pipeline scripts:
+  - `DATACHAT_RAG`: Semantic cache hits/misses, Supabase pgvector retrieval, and Groq compilation.
+  - `ONNX_HFT`: ONNX runtime CUDA execution, sliding order book ticks, and C++ vs Python speedup analysis.
+  - `HIFUN_ROUTER`: Tabular feature extraction routing query requests to SQL/Neo4j endpoints along with live SHAP explainability weights.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. **Recruiter Snapshot Metrics**
+- Interactive key performance indicator cards targeting production parameters:
+  - **4.5M+** order book snapshots processed (FI-2010 benchmark).
+  - **22** languages evaluated (ACL SemEval-2026 Task 9).
+  - **97.3%** classification accuracy on relational vs graph query routing.
+  - **60%** cost reduction in commercial LLM tokens using semantic pgvector caches.
 
-## Learn More
+### 3. **ACL SemEval-2026 Research Dashboard**
+- Spotlights the peer-reviewed paper: *"Robust Multilingual Polarization Detection via Dual-Encoder Fusion and Expert Ensembling"*.
+- Highlights include a comparative macro-F1 benchmark chart (outperforming baseline zero-shot Llama-3-8B) and an interactive 22-language evaluation matrix.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. **Server Rack Stack**
+- Represents engineering capabilities as physical blades in an interactive server cabinet:
+  - **Inference Blade:** ONNX Runtime, PyTorch, LibTorch, TensorRT.
+  - **Vector/Cache Blade:** pgvector (Supabase), Redis, ChromaDB, Pinecone.
+  - **Infra/Systems Blade:** Docker, CMake, Linux, C++ (STL), Git.
+  - **Languages Blade:** C++, Python, TypeScript, SQL, Cypher.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. **Recruiter ATS Mode**
+- A toggle button on the Navbar instantly reorganizes the landing page layout, displaying an ATS-ready profile summary, quick-copy contact panels, and a direct download button for the verified resume (`Piyush_Prashant_Resume_Final.docx`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Technology Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** TailwindCSS (curated slate/graphite theme with glassmorphism effects)
+- **Animations:** Framer Motion (micro-animations, layout fades, and dynamic hover feedback)
+- **Data Visualizations:** Recharts (responsive vector latency comparisons)
+- **Icons:** Lucide React & inline custom SVGs (for brand logo stability)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Running Locally
+
+1. **Clone and navigate to the project directory:**
+   ```bash
+   cd "c:\Users\palak\OneDrive\Desktop\resume"
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your web browser.
+
+4. **Verify production compilation:**
+   ```bash
+   npm run build
+   ```
