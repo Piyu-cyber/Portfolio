@@ -14,6 +14,7 @@ export default function TerminalDemo() {
   const [gpuLoad, setGpuLoad] = useState(42);
   const [vramUsage, setVramUsage] = useState(8.4);
   const [activeSimulation, setActiveSimulation] = useState<string | null>(null);
+  const [commandInput, setCommandInput] = useState("");
   const terminalEndRef = useRef<HTMLDivElement>(null);
 
   const addLog = React.useCallback((text: string, type: "info" | "success" | "warning" | "error" | "command" = "info") => {
@@ -134,6 +135,97 @@ export default function TerminalDemo() {
     }, 2600);
   };
 
+  const currentTimestamp = () => {
+    const now = new Date();
+    return now.toTimeString().split(" ")[0] + "." + String(now.getMilliseconds()).padStart(3, "0");
+  };
+
+  const handleCommandSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = commandInput.trim();
+    if (!cmd) return;
+
+    addLog(cmd, "command");
+    setCommandInput("");
+
+    const args = cmd.toLowerCase().split(" ");
+    const primaryCmd = args[0];
+
+    switch (primaryCmd) {
+      case "help":
+        addLog("Available commands:", "info");
+        addLog("  help       Show this help dialog", "info");
+        addLog("  ls         List directory files", "info");
+        addLog("  cat <file> Read a file (e.g. 'cat resume')", "info");
+        addLog("  run <job>  Run simulation ('datachat', 'deeplob', 'hifun')", "info");
+        addLog("  neofetch   Display system & engineering profile info", "info");
+        addLog("  clear      Clear terminal screen", "info");
+        break;
+      case "clear":
+        setLogs([]);
+        break;
+      case "ls":
+        addLog("total 5", "info");
+        addLog("-rw-r--r--  1 piyush  staff   511K May 20 01:50 269_Paper.pdf", "info");
+        addLog("-rw-r--r--  1 piyush  staff   1.1M May 20 01:30 Piyush_Prashant_Resume_Final.docx", "info");
+        addLog("drwxr-xr-x  4 piyush  staff   128B May 20 01:35 hft_engine/", "info");
+        addLog("drwxr-xr-x  8 piyush  staff   256B May 20 01:35 rag_cache/", "info");
+        addLog("drwxr-xr-x  6 piyush  staff   192B May 20 01:35 src/", "info");
+        break;
+      case "cat":
+        if (args[1] === "resume") {
+          addLog("==================================================", "info");
+          addLog("PIYUSH PRASHANT // SYSTEMS & AI INFRASTRUCTURE ENG", "info");
+          addLog("--------------------------------------------------", "info");
+          addLog("Education: B.Tech Data Science & AI @ IIIT Dharwad", "info");
+          addLog("Publications: ACL SemEval-2026 Author (Polarization)", "info");
+          addLog("Core focus: Low-latency C++, CUDA, RAG, pgvector", "info");
+          addLog("Email: prashantpiyush35@gmail.com", "info");
+          addLog("Phone: +91 8210326084", "info");
+          addLog("==================================================", "info");
+        } else if (args[1] === "paper" || args[1] === "269_paper.pdf") {
+          addLog("File is a PDF binary format. Use \"DOWNLOAD PAPER (PDF)\" in the Research Lab section below.", "warning");
+        } else if (args[1] === "resume.docx" || args[1] === "piyush_prashant_resume_final.docx") {
+          addLog("File is a Word binary format. Use the download buttons above.", "warning");
+        } else {
+          addLog("usage: cat <file> (e.g. 'cat resume')", "warning");
+        }
+        break;
+      case "run":
+        if (args[1] === "datachat") {
+          simulateRAG();
+        } else if (args[1] === "deeplob" || args[1] === "onnx_hft") {
+          simulateHFT();
+        } else if (args[1] === "hifun" || args[1] === "hifun_router") {
+          simulateRouter();
+        } else {
+          addLog("usage: run <job> (options: 'datachat', 'deeplob', 'hifun')", "warning");
+        }
+        break;
+      case "neofetch":
+        addLog("              .,-:;//;:=,", "success");
+        addLog("          . :H##M#H#M#H##M#H: .", "success");
+        addLog("        .  H##M#H#M#H##M#H##M#H  .", "success");
+        addLog("       :H##M#H#M#H##M#H##M#H##M#H:", "success");
+        addLog("       --------------------------------------", "info");
+        addLog("       OS: Arch Linux x86_64", "info");
+        addLog("       Host: Piyush-Inference-Node-01", "info");
+        addLog("       Kernel: 6.8.9-arch1-1", "info");
+        addLog("       Uptime: 24 days, 6 hours", "info");
+        addLog("       Shell: bash 5.2.26", "info");
+        addLog("       CPU: AMD Ryzen Threadripper 3970X (64) @ 3.7GHz", "info");
+        addLog("       GPU: NVIDIA RTX A6000 48GB (Compute 8.6)", "info");
+        addLog("       Memory: 65120MiB / 131072MiB (49%)", "info");
+        addLog("       CUDA version: 12.4", "success");
+        addLog("       LLM Pool: Local (nomic-embed-text) + API (Groq)", "success");
+        addLog("       Target Roles: AI & Systems Infrastructure Engineer", "success");
+        break;
+      default:
+        addLog(`sh: command not found: ${primaryCmd}. Type 'help' for options.`, "error");
+        break;
+    }
+  };
+
   return (
     <div className="w-full bg-[#12141C] border border-card-border rounded-lg shadow-2xl overflow-hidden flex flex-col font-mono text-xs text-slate-300">
       {/* Header bar */}
@@ -200,6 +292,21 @@ export default function TerminalDemo() {
             )}
           </div>
         ))}
+        
+        {/* Interactive CLI Input Line */}
+        <form onSubmit={handleCommandSubmit} className="flex items-center gap-1 mt-1">
+          <span className="text-text-muted select-none text-[10px]">{currentTimestamp()}</span>
+          <span className="text-accent-green select-none font-bold">$</span>
+          <input
+            type="text"
+            value={commandInput}
+            onChange={(e) => setCommandInput(e.target.value)}
+            disabled={activeSimulation !== null}
+            className="flex-1 bg-transparent text-accent-cyan outline-none border-none font-mono text-[11px] placeholder-slate-700 focus:ring-0 p-0 m-0 w-full"
+            placeholder={activeSimulation ? "Running job..." : "Type 'help' for options..."}
+          />
+        </form>
+
         <div ref={terminalEndRef} />
       </div>
 

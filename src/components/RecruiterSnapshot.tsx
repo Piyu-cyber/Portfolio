@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronRight, ShieldAlert, BarChart2, Activity, Globe, DollarSign, Zap } from "lucide-react";
 
 interface MetricItem {
@@ -17,6 +17,14 @@ interface MetricItem {
 
 export default function RecruiterSnapshot() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
+  const [metricOffset, setMetricOffset] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMetricOffset((prev) => (prev + 1) % 100);
+    }, 1500);
+    return () => clearInterval(timer);
+  }, []);
 
   const metrics: MetricItem[] = [
     {
@@ -138,12 +146,44 @@ export default function RecruiterSnapshot() {
                 </div>
 
                 {/* Big Metric Display */}
-                <div className="mb-2">
-                  <div className="text-4xl font-mono font-extrabold text-white tracking-tight">
-                    {item.metric}
+                <div className="mb-2 flex items-baseline justify-between">
+                  <div>
+                    <div className="text-4xl font-mono font-extrabold text-white tracking-tight min-w-[130px]">
+                      {item.id === "m1" ? (4582104 + (metricOffset % 40) * 17).toLocaleString() + "+" :
+                       item.id === "m4" ? (84.32 + (metricOffset % 7) * 0.01).toFixed(2) + "%" :
+                       item.id === "m6" ? (1.75 + (metricOffset % 5) * 0.002).toFixed(3) + "x" :
+                       item.id === "m3" ? (97.31 + (metricOffset % 4) * 0.01).toFixed(2) + "%" :
+                       item.metric}
+                    </div>
+                    <div className="text-xs font-mono font-bold text-slate-300 mt-1 line-clamp-1">
+                      {item.label}
+                    </div>
                   </div>
-                  <div className="text-xs font-mono font-bold text-slate-300 mt-1 line-clamp-1">
-                    {item.label}
+                  
+                  {/* Live telemetry sparkline */}
+                  <div className="w-16 h-8 text-text-muted/40 shrink-0 pointer-events-none self-end pb-1 overflow-hidden relative">
+                    <svg className="w-full h-full" viewBox="0 0 100 40">
+                      <path
+                        d={
+                          item.id === "m1" ? `M0 35 L20 32 L40 ${38 - (metricOffset % 10)} L60 20 L80 18 L100 ${10 + (metricOffset % 8)}` :
+                          item.id === "m2" ? "M0 25 L15 25 L30 20 L45 35 L60 10 L75 28 L90 12 L100 15" :
+                          item.id === "m3" ? "M0 38 L20 30 L40 25 L60 22 L80 10 L100 8" :
+                          item.id === "m4" ? `M0 20 L20 ${10 + (metricOffset % 12)} L40 5 L60 15 L80 8 L100 ${12 + (metricOffset % 6)}` :
+                          item.id === "m5" ? "M0 38 L20 32 L40 20 L60 12 L80 15 L100 5" :
+                          `M0 28 L20 15 L40 ${22 - (metricOffset % 8)} L60 8 L80 18 L100 ${2 + (metricOffset % 4)}`
+                        }
+                        stroke={
+                          item.id === "m1" || item.id === "m6" ? "#3B82F6" :
+                          item.id === "m2" ? "#A855F7" :
+                          item.id === "m3" || item.id === "m5" ? "#10B981" :
+                          "#06B6D4"
+                        }
+                        strokeWidth="1.5"
+                        fill="none"
+                        className="opacity-50"
+                      />
+                    </svg>
+                    <span className="absolute right-0 top-0 w-1.5 h-1.5 rounded-full bg-accent-green animate-ping"></span>
                   </div>
                 </div>
 
