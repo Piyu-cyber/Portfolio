@@ -14,12 +14,15 @@ import RecruiterQuickMode from "@/components/RecruiterQuickMode";
 
 import { motion } from "framer-motion";
 import DocumentPreview from "@/components/DocumentPreview";
+import ControlCenter from "@/components/ControlCenter";
 
 export default function Home() {
   const [recruiterMode, setRecruiterMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewType, setPreviewType] = useState<"resume" | "paper" | null>(null);
+  const [crtActive, setCrtActive] = useState(false);
+  const [gridActive, setGridActive] = useState(true);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY, currentTarget } = e;
@@ -56,7 +59,7 @@ export default function Home() {
       <div className="absolute bottom-[-10%] left-[15%] w-[48vw] h-[48vw] max-w-[600px] rounded-full bg-rose-200/40 blur-[100px] animate-blob animation-delay-4000 pointer-events-none z-0" />
 
       {/* Cyber grid lines overlay */}
-      <div className="absolute inset-0 cyber-grid pointer-events-none z-0 opacity-70" />
+      {gridActive && <div className="absolute inset-0 cyber-grid pointer-events-none z-0 opacity-70" />}
 
       {/* Dynamic Cursor Light Overlay */}
       <div 
@@ -155,7 +158,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-              className="lg:col-span-5 w-full"
+              className={`lg:col-span-5 w-full rounded-lg overflow-hidden relative ${crtActive ? "crt-scanlines animate-crt" : ""}`}
             >
               <TerminalDemo />
             </motion.div>
@@ -229,6 +232,16 @@ export default function Home() {
         isOpen={previewOpen} 
         onClose={() => setPreviewOpen(false)} 
         docType={previewType} 
+      />
+
+      {/* iOS-style Control Center Widget */}
+      <ControlCenter
+        recruiterMode={recruiterMode}
+        setRecruiterMode={setRecruiterMode}
+        crtActive={crtActive}
+        setCrtActive={setCrtActive}
+        gridActive={gridActive}
+        setGridActive={setGridActive}
       />
     </div>
   );

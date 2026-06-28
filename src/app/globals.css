@@ -143,6 +143,16 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: none;
     opacity: 0.5;
   }
+  
+  @keyframes crt-flicker {
+    0% { opacity: 0.98; }
+    50% { opacity: 1; }
+    100% { opacity: 0.98; }
+  }
+  
+  .animate-crt {
+    animation: crt-flicker 0.2s infinite;
+  }
 
   /* Floating fluid blob animations */
   @keyframes blob-move {
