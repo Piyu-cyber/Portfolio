@@ -227,14 +227,20 @@ export default function TerminalDemo() {
   };
 
   return (
-    <div className="w-full bg-[#12141C] border border-card-border rounded-lg shadow-2xl overflow-hidden flex flex-col font-mono text-xs text-slate-300">
+    <div className="w-full glass-hud border border-card-border/85 rounded-lg shadow-2xl overflow-hidden flex flex-col font-mono text-xs text-slate-300 relative group transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+      {/* HUD Corner Accents */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-accent-green pointer-events-none opacity-50"></div>
+      <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-accent-green pointer-events-none opacity-50"></div>
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-accent-green pointer-events-none opacity-50"></div>
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-accent-green pointer-events-none opacity-50"></div>
+
       {/* Header bar */}
-      <div className="bg-[#0B0C0E] border-b border-card-border px-4 py-2 flex items-center justify-between select-none">
+      <div className="bg-[#0B0C0E]/80 border-b border-card-border/80 px-4 py-2 flex items-center justify-between select-none">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></span>
-            <span className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></span>
-            <span className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/50"></span>
           </div>
           <div className="h-4 w-[1px] bg-card-border mx-2"></div>
           <span className="text-[11px] text-text-muted flex items-center gap-1">
@@ -261,7 +267,7 @@ export default function TerminalDemo() {
       </div>
 
       {/* Log panel */}
-      <div className="p-4 h-72 overflow-y-auto space-y-1 bg-[#0B0C0E]/40 font-mono text-[11px] leading-relaxed scrollbar-thin">
+      <div className="p-4 h-72 overflow-y-auto space-y-1 bg-[#0B0C0E]/70 font-mono text-[11px] leading-relaxed scrollbar-thin relative crt-scanlines animate-crt">
         {logs.map((log, index) => (
           <div key={index} className="flex items-start gap-2">
             <span className="text-text-muted select-none text-[10px] pt-[2px]">{log.timestamp}</span>

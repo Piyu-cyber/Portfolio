@@ -12,8 +12,20 @@ import EngineeringStack from "@/components/EngineeringStack";
 import Timeline from "@/components/Timeline";
 import RecruiterQuickMode from "@/components/RecruiterQuickMode";
 
+import { motion } from "framer-motion";
+
 export default function Home() {
   const [recruiterMode, setRecruiterMode] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY, currentTarget } = e;
+    const rect = currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: clientX - rect.left,
+      y: clientY - rect.top,
+    });
+  };
 
   const trustBarItems = [
     { label: "ACL SemEval-2026 Author", detail: "22-Language NLP Research" },
@@ -31,7 +43,21 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0C0E] text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white">
+    <div 
+      onMouseMove={handleMouseMove}
+      className="min-h-screen bg-[#0B0C0E] text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white relative overflow-hidden"
+    >
+      {/* Animated Fixed Cyber-Grid Background */}
+      <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-70" />
+
+      {/* Dynamic Cursor Light Overlay */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(16, 185, 129, 0.045), transparent 60%)`
+        }}
+      />
+
       {/* Hidden Recruiter Keywords for Search Engine Crawlers & ATS Parsers */}
       <div className="sr-only" aria-hidden="true">
         AI Engineer, ML Engineer, RAG Engineer, Applied AI, LLM Infrastructure, NLP Research, Quant ML, Deep Learning Engineer, Agentic AI, Supabase, pgvector, ONNX, CUDA, PyTorch, C++, Python, Next.js, React
@@ -41,15 +67,20 @@ export default function Home() {
       <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 space-y-20">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 space-y-20 relative z-10">
         
         {/* HERO SECTION */}
         <section className="min-h-[calc(100vh-8rem)] flex flex-col justify-center gap-12 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Column: Heading and CTAs */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-card-border bg-[#12141C] text-[10px] font-mono text-accent-green tracking-wider uppercase">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-card-border bg-[#12141C] text-[10px] font-mono text-accent-green tracking-wider uppercase shadow-md shadow-accent-green/5">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-ping"></span>
                 systems_engineer_run // ACTIVE
               </div>
@@ -63,7 +94,7 @@ export default function Home() {
               </h1>
 
               <p className="text-sm sm:text-base text-text-muted font-mono leading-relaxed max-w-2xl">
-                B.Tech Data Science & AI student at IIIT Dharwad working on RAG systems, agentic AI pipelines, multilingual ML research, and low-latency inference infrastructure.
+                B.Tech Data Science & AI honours student at IIIT Dharwad (expected May 2028). Specializes in low-latency C++ model inference engines, pgvector-based RAG caching systems, and XGBoost query routing.
               </p>
 
               {/* Action Buttons */}
@@ -104,12 +135,17 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Terminal Visual */}
-            <div className="lg:col-span-5 w-full">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+              className="lg:col-span-5 w-full"
+            >
               <TerminalDemo />
-            </div>
+            </motion.div>
           </div>
 
           {/* Trust Bar Grid */}

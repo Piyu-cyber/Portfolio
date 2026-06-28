@@ -64,7 +64,12 @@ export default function ResearchLab() {
         </div>
 
         {/* Paper Details Card */}
-        <div className="bg-[#12141C] border border-card-border rounded-lg overflow-hidden p-6 mb-10">
+        <div className="glass-hud border border-card-border/80 rounded-lg overflow-hidden p-6 mb-10 relative group hover:border-slate-700 transition-all duration-300">
+          {/* HUD Corner Accents */}
+          <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-card-border pb-6">
             <div className="space-y-2">
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-accent-purple/10 border border-accent-purple/30 text-accent-purple font-mono text-[10px] font-bold">
@@ -165,7 +170,12 @@ export default function ResearchLab() {
         </div>
 
         {/* Language Benchmark Map / Interactive stats */}
-        <div className="bg-[#12141C] border border-card-border rounded-lg p-6 font-mono text-xs">
+        <div className="glass-hud border border-card-border/80 rounded-lg p-6 font-mono text-xs relative group hover:border-slate-700 transition-all duration-300">
+          {/* HUD Corner Accents */}
+          <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-card-border/60 pb-4 mb-6">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-accent-green" />

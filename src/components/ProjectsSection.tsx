@@ -277,8 +277,12 @@ export default function ProjectsSection() {
 
         {/* Main interactive panel */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left panel: project details (7 cols) */}
-          <div className="lg:col-span-7 bg-[#12141C]/80 border border-card-border rounded-lg p-6 sm:p-8 flex flex-col justify-between min-h-[400px]">
+          <div className="lg:col-span-7 glass-hud border border-card-border/80 rounded-lg p-6 sm:p-8 flex flex-col justify-between min-h-[400px] relative group hover:border-slate-700 transition-all duration-300">
+            {/* HUD Corner Accents */}
+            <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
             {activeProject === "datachat" && (
               <>
                 <div className="space-y-6">
@@ -488,7 +492,12 @@ export default function ProjectsSection() {
           </div>
 
           {/* Right panel: visuals/interactive widgets (5 cols) */}
-          <div className="lg:col-span-5 bg-[#12141C] border border-card-border rounded-lg p-5 min-h-[350px] flex flex-col justify-between font-mono text-xs">
+          <div className="lg:col-span-5 glass-hud border border-card-border/80 rounded-lg p-5 min-h-[350px] flex flex-col justify-between font-mono text-xs relative group hover:border-slate-700 transition-all duration-300">
+            {/* HUD Corner Accents */}
+            <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-slate-700 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
             {activeProject === "datachat" && (
               <div className="space-y-6 flex-1 flex flex-col justify-between">
                 {/* Visual RAG Flow */}

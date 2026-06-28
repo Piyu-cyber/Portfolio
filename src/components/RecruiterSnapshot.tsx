@@ -127,12 +127,20 @@ export default function RecruiterSnapshot() {
                 onMouseEnter={() => setActiveCard(item.id)}
                 onMouseLeave={() => setActiveCard(null)}
                 onClick={() => setActiveCard(isActive ? null : item.id)}
-                className={`relative rounded-lg bg-[#12141C] border transition-all duration-300 cursor-pointer overflow-hidden p-6 flex flex-col justify-between ${
+                className={`relative rounded-lg glass-hud border transition-all duration-300 cursor-pointer overflow-hidden p-6 flex flex-col justify-between group ${
                   isActive
-                    ? "border-slate-500 shadow-xl shadow-slate-950/50 scale-[1.01]"
-                    : "border-card-border hover:border-slate-800"
+                    ? item.id === "m1" || item.id === "m6" ? "border-accent-blue/80 shadow-[0_0_25px_rgba(59,130,246,0.15)] scale-[1.01]" :
+                      item.id === "m2" ? "border-accent-purple/80 shadow-[0_0_25px_rgba(139,92,246,0.15)] scale-[1.01]" :
+                      item.id === "m3" || item.id === "m5" ? "border-accent-green/80 shadow-[0_0_25px_rgba(16,185,129,0.15)] scale-[1.01]" :
+                      "border-accent-cyan/80 shadow-[0_0_25px_rgba(6,182,212,0.15)] scale-[1.01]"
+                    : "border-card-border/80 hover:border-slate-700"
                 }`}
               >
+                {/* HUD Corner Accents */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-slate-700 pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-slate-700 pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-slate-700 pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-slate-700 pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity"></div>
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-2.5 rounded border ${item.colorClass}`}>

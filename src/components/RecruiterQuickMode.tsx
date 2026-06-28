@@ -21,7 +21,13 @@ export default function RecruiterQuickMode() {
   ];
 
   return (
-    <div className="w-full bg-[#12141C] border border-accent-green/30 rounded-xl overflow-hidden shadow-2xl relative glow-green transition-all duration-300">
+    <div className="w-full glass-hud border border-accent-green/45 rounded-xl overflow-hidden shadow-2xl relative glow-green transition-all duration-300 group">
+      {/* HUD Corner Accents */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-accent-green pointer-events-none opacity-60"></div>
+      <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-accent-green pointer-events-none opacity-60"></div>
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-accent-green pointer-events-none opacity-60"></div>
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-accent-green pointer-events-none opacity-60"></div>
+
       {/* Dynamic Header */}
       <div className="bg-accent-green/10 border-b border-accent-green/20 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
