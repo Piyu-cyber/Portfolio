@@ -3,44 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --background: #080A10; /* Space Slate */
-  --foreground: #F1F5F9;
+  --background: #F3F4F6;
+  --foreground: #0F172A; /* Slate 900 */
   
-  --card-bg: rgba(13, 17, 28, 0.45);
-  --card-border: rgba(255, 255, 255, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-border: rgba(255, 255, 255, 0.4);
   
-  --accent-green: #38BDF8; /* Frosty Sky Blue */
-  --accent-blue: #6366F1;  /* Electric Indigo */
-  --accent-cyan: #22D3EE;  /* Soft Cyan */
-  --accent-purple: #A855F7;/* Soft Purple */
+  --accent-green: #34C759; /* iOS System Green */
+  --accent-blue: #007AFF;  /* iOS System Blue */
+  --accent-cyan: #30B0C7;  /* iOS System Cyan */
+  --accent-purple: #AF52DE;/* iOS System Purple */
   
-  --text-muted: #64748B;
+  --text-muted: #475569;   /* Slate 600 */
 }
 
 body {
   color: var(--foreground);
-  background-color: var(--background);
+  /* Premium iOS-style fluid liquid gradient wallpaper */
+  background: 
+    radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.75) 0px, transparent 50%), 
+    radial-gradient(at 50% 0%, rgba(243, 232, 255, 0.75) 0px, transparent 50%), 
+    radial-gradient(at 100% 0%, rgba(191, 219, 254, 0.75) 0px, transparent 50%), 
+    radial-gradient(at 0% 100%, rgba(254, 205, 211, 0.7) 0px, transparent 50%), 
+    radial-gradient(at 100% 100%, rgba(165, 180, 252, 0.7) 0px, transparent 50%), 
+    #F3F4F6;
+  background-attachment: fixed;
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar to keep details looking clean like a code editor */
+/* Custom scrollbar to keep details looking clean */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0C0E;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: rgba(15, 23, 42, 0.1);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: rgba(15, 23, 42, 0.2);
 }
 
 @layer utilities {
@@ -48,43 +56,44 @@ body {
     text-wrap: balance;
   }
   .glow-green {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04), 0 0 15px rgba(52, 199, 89, 0.08);
   }
   .glow-blue {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04), 0 0 15px rgba(0, 122, 255, 0.08);
   }
   .glow-cyan {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04), 0 0 15px rgba(48, 176, 199, 0.08);
   }
   .border-gradient {
-    border-image: linear-gradient(to right, #1e293b, #334155, #1e293b) 1;
+    border-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.2), rgba(255,255,255,0.4)) 1;
   }
   
   /* Cyberpunk / Futuristic Utilities */
   .cyber-grid {
     background-size: 50px 50px;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
   }
   
   .glass-hud {
-    background: rgba(18, 20, 28, 0.65);
-    backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(20px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
   }
   
   .glow-border-green:hover {
-    border-color: rgba(16, 185, 129, 0.4);
-    box-shadow: 0 0 25px rgba(16, 185, 129, 0.1);
+    border-color: rgba(52, 199, 89, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(52, 199, 89, 0.08);
   }
   .glow-border-blue:hover {
-    border-color: rgba(59, 130, 246, 0.4);
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.1);
+    border-color: rgba(0, 122, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 122, 255, 0.08);
   }
   .glow-border-purple:hover {
-    border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.1);
+    border-color: rgba(175, 82, 222, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(175, 82, 222, 0.08);
   }
   
   /* Scanline CRT overlay */
@@ -93,21 +102,67 @@ body {
     display: block;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(15, 23, 42, 0.02) 50%), linear-gradient(90deg, rgba(0, 122, 255, 0.01), rgba(52, 199, 89, 0.005), rgba(175, 82, 222, 0.01));
     z-index: 10;
     background-size: 100% 4px, 6px 100%;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.5;
   }
   
-  @keyframes crt-flicker {
-    0% { opacity: 0.98; }
-    50% { opacity: 1; }
-    100% { opacity: 0.99; }
+  /* Override Dark Theme Text Utility Classes for iOS Light Glassmorphic Style */
+  .text-white {
+    color: #0F172A !important; /* Force slate-900 */
+  }
+  .text-slate-100 {
+    color: #1E293B !important; /* Force slate-800 */
+  }
+  .text-slate-200 {
+    color: #334155 !important;
+  }
+  .text-slate-300 {
+    color: #334155 !important; /* Force slate-700 */
+  }
+  .text-slate-400 {
+    color: #475569 !important; /* Force slate-600 */
+  }
+  .bg-\[\#12141C\] {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+  .bg-\[\#0B0C0E\] {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+  .bg-\[\#12141C\]\/80 {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+  .bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70 {
+    background: rgba(255, 255, 255, 0.3) !important;
+  }
+  .bg-\[\#12141C\]\/30 {
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+  .bg-card-bg {
+    background: rgba(255, 255, 255, 0.3) !important;
+  }
+  .border-card-border {
+    border-color: rgba(15, 23, 42, 0.06) !important;
   }
   
-  .animate-crt {
-    animation: crt-flicker 0.15s infinite;
+  /* Keep text white on buttons and badges that have solid colored backgrounds */
+  button .text-white, 
+  a .text-white,
+  .bg-accent-blue .text-white,
+  .bg-accent-green .text-white,
+  .bg-accent-purple .text-white,
+  .bg-slate-900 .text-white,
+  button.text-white,
+  a.text-white,
+  .text-white.keep-white,
+  .bg-white .text-white {
+    color: #FFFFFF !important;
   }
 }
-

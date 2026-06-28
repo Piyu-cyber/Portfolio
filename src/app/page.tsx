@@ -54,7 +54,7 @@ export default function Home() {
       <div 
         className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-100"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(16, 185, 129, 0.045), transparent 60%)`
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.35), transparent 50%)`
         }}
       />
 
@@ -101,10 +101,10 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={(e) => handleScrollTo(e, "#projects")}
-                  className="px-5 py-3 rounded bg-white text-[#0B0C0E] hover:bg-slate-200 font-mono font-bold text-xs flex items-center gap-1.5 transition-colors"
+                  className="px-5 py-3 rounded bg-accent-blue text-white font-mono font-bold text-xs flex items-center gap-1.5 transition-colors keep-white hover:bg-accent-blue/90"
                 >
                   <span>View Projects</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-white keep-white" />
                 </button>
 
                 <button

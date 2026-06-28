@@ -108,14 +108,14 @@ export default function Timeline() {
                   <svg className="w-full h-full absolute inset-0" strokeWidth="2" fill="none">
                     <line x1="24" y1="35" x2="24" y2="100%" stroke="#3B82F6" />
                     <path d="M 24 35 C 24 50, 48 50, 48 65 L 48 100%" stroke="#A855F7" />
-                    <circle cx="24" cy="35" r="4.5" fill="#3B82F6" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="24" cy="35" r="4.5" fill="#3B82F6" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
                 {idx === 1 && (
                   <svg className="w-full h-full absolute inset-0" strokeWidth="2" fill="none">
                     <line x1="24" y1="0" x2="24" y2="100%" stroke="#3B82F6" />
                     <line x1="48" y1="0" x2="48" y2="100%" stroke="#A855F7" />
-                    <circle cx="48" cy="35" r="4.5" fill="#A855F7" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="48" cy="35" r="4.5" fill="#A855F7" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
                 {idx === 2 && (
@@ -123,27 +123,27 @@ export default function Timeline() {
                     <line x1="24" y1="0" x2="24" y2="100%" stroke="#3B82F6" />
                     <path d="M 48 0 L 48 20 C 48 35, 24 35, 24 50" stroke="#A855F7" />
                     <line x1="48" y1="35" x2="48" y2="100%" stroke="#10B981" />
-                    <circle cx="48" cy="35" r="4.5" fill="#10B981" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="48" cy="35" r="4.5" fill="#10B981" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
                 {idx === 3 && (
                   <svg className="w-full h-full absolute inset-0" strokeWidth="2" fill="none">
                     <line x1="24" y1="0" x2="24" y2="100%" stroke="#3B82F6" />
                     <line x1="48" y1="0" x2="48" y2="100%" stroke="#10B981" />
-                    <circle cx="48" cy="35" r="4.5" fill="#06B6D4" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="48" cy="35" r="4.5" fill="#06B6D4" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
                 {idx === 4 && (
                   <svg className="w-full h-full absolute inset-0" strokeWidth="2" fill="none">
                     <line x1="24" y1="0" x2="24" y2="100%" stroke="#3B82F6" />
                     <path d="M 24 0 C 24 15, 48 15, 48 35 L 48 100%" stroke="#10B981" />
-                    <circle cx="48" cy="35" r="4.5" fill="#10B981" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="48" cy="35" r="4.5" fill="#10B981" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
                 {idx === 5 && (
                   <svg className="w-full h-full absolute inset-0" strokeWidth="2" fill="none">
                     <line x1="24" y1="0" x2="24" y2="35" stroke="#3B82F6" />
-                    <circle cx="24" cy="35" r="4.5" fill="#3B82F6" stroke="#12141C" strokeWidth="2.5" />
+                    <circle cx="24" cy="35" r="4.5" fill="#3B82F6" stroke="white" strokeWidth="2.5" />
                   </svg>
                 )}
               </div>
