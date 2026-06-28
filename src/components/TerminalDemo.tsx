@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, RotateCcw, Cpu, Terminal as TermIcon, CheckCircle, Database } from "lucide-react";
+import { Database, Play, RotateCcw, CheckCircle, Terminal, Cpu } from "lucide-react";
+import { playUISound } from "@/utils/audio";
 
 interface LogEntry {
   type: "info" | "success" | "warning" | "error" | "command";
@@ -69,6 +70,7 @@ export default function TerminalDemo() {
   // RAG Pipeline Simulation
   const simulateRAG = () => {
     if (activeSimulation) return;
+    playUISound("click");
     setActiveSimulation("RAG");
     addLog("python src/pipelines/datachat_rag.py --query 'select revenue by quarter'", "command");
     
@@ -84,6 +86,7 @@ export default function TerminalDemo() {
     setTimeout(() => addLog("Executing SQL against analytics engine... Returned 4 rows.", "info"), 3700);
     setTimeout(() => {
       addLog("RAG response generated successfully. Total duration: 3.82s (Semantic cached runs will take ~1.2s)", "success");
+      playUISound("success");
       setActiveSimulation(null);
     }, 4000);
   };
@@ -91,6 +94,7 @@ export default function TerminalDemo() {
   // HFT Inference Simulation
   const simulateHFT = () => {
     if (activeSimulation) return;
+    playUISound("click");
     setActiveSimulation("HFT");
     addLog("bin/deeplob_inference --source market_feed_stream --model models/transformerlob.onnx", "command");
     
@@ -105,6 +109,7 @@ export default function TerminalDemo() {
     setTimeout(() => addLog("  -> Mid-price prediction Accuracy: 84.32% (FI-2010 benchmark)", "success"), 2900);
     setTimeout(() => {
       addLog("ONNX pipeline operating inside ultra-low latency criteria.", "success");
+      playUISound("success");
       setActiveSimulation(null);
     }, 3200);
   };
@@ -112,6 +117,7 @@ export default function TerminalDemo() {
   // HIFUN Router Simulation
   const simulateRouter = () => {
     if (activeSimulation) return;
+    playUISound("click");
     setActiveSimulation("Router");
     addLog("python src/router/classify.py --query 'MATCH (p:Person)-[:FRIEND]->(f) RETURN p.name, f.name'", "command");
     
@@ -126,6 +132,7 @@ export default function TerminalDemo() {
     setTimeout(() => addLog("Auto-routed query directly to Neo4j database endpoint.", "success"), 2300);
     setTimeout(() => {
       addLog("Routing completed. F1 score benchmark: 97.3%", "success");
+      playUISound("success");
       setActiveSimulation(null);
     }, 2600);
   };
@@ -140,6 +147,7 @@ export default function TerminalDemo() {
     const cmd = commandInput.trim();
     if (!cmd) return;
 
+    playUISound("click");
     addLog(cmd, "command");
     setCommandInput("");
 
@@ -239,7 +247,7 @@ export default function TerminalDemo() {
           </div>
           <div className="h-4 w-[1px] bg-card-border mx-2"></div>
           <span className="text-[11px] text-text-muted flex items-center gap-1">
-            <TermIcon className="w-3.5 h-3.5" />
+            <Terminal className="w-3.5 h-3.5" />
             piyush@deep-infra-node-01: ~
           </span>
         </div>
