@@ -178,8 +178,9 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.35) !important;
   backdrop-filter: blur(16px) saturate(180%);
 }
-.bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70 {
-  background: rgba(255, 255, 255, 0.3) !important;
+.bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70, .bg-\[\#0B0C0E\]\/80, .bg-\[\#0B0C0E\]\/90 {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(16px) saturate(180%);
 }
 .bg-\[\#12141C\]\/30 {
   background: rgba(255, 255, 255, 0.25) !important;
@@ -191,18 +192,23 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Keep text white on buttons and badges that have solid colored backgrounds */
-button .text-white, 
-a .text-white,
-.bg-accent-blue .text-white,
-.bg-accent-green .text-white,
-.bg-accent-purple .text-white,
-.bg-slate-900 .text-white,
-button.text-white,
-a.text-white,
+/* Force links/text hovers to system blue instead of white for clear contrast */
+a:hover, 
+button:hover,
+.hover\:text-white:hover {
+  color: var(--accent-blue) !important;
+}
+
+/* Keep text/icons white ONLY on buttons and badges that have solid dark backgrounds */
+.bg-accent-blue,
+.bg-accent-blue *,
+.bg-slate-900,
+.bg-slate-900 *,
 .text-white.keep-white,
 .keep-white .text-white,
 .keep-white,
-.bg-white .text-white {
+.keep-white * {
   color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  fill: #FFFFFF !important;
 }
