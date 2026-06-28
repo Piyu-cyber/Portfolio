@@ -75,10 +75,10 @@ export default function Home() {
       <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 space-y-20 relative z-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 space-y-20 relative z-10">
         
         {/* HERO SECTION */}
-        <section className="min-h-[calc(100vh-8rem)] flex flex-col justify-center gap-12 py-10">
+        <section className="pt-8 pb-10 flex flex-col gap-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Column: Heading and CTAs */}

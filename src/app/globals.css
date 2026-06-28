@@ -192,27 +192,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-\[\#12141C\] {
   background: rgba(255, 255, 255, 0.35) !important;
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%) !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
 }
 .bg-\[\#0B0C0E\] {
   background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%) !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
 }
 .bg-\[\#12141C\]\/80 {
   background: rgba(255, 255, 255, 0.35) !important;
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%) !important;
 }
 .bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70, .bg-\[\#0B0C0E\]\/80, .bg-\[\#0B0C0E\]\/90 {
   background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%) !important;
 }
 .bg-\[\#12141C\]\/30 {
   background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
 }
 .bg-card-bg {
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 .border-card-border {
   border-color: rgba(15, 23, 42, 0.06) !important;
