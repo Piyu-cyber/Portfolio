@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +16,7 @@
   --accent-cyan: #30B0C7;  /* iOS System Cyan */
   --accent-purple: #AF52DE;/* iOS System Purple */
   
-  --text-muted: #475569;   /* Slate 600 */
+  --text-muted: #1E293B;   /* Slate 800 */
 }
 
 body {
@@ -28,8 +30,41 @@ body {
     radial-gradient(at 100% 100%, rgba(165, 180, 252, 0.7) 0px, transparent 50%), 
     #F3F4F6;
   background-attachment: fixed;
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
+}
+
+/* Typography Hierarchy mappings per section */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700;
+}
+
+#hero {
+  font-family: 'Outfit', sans-serif;
+}
+#hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+#projects {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+#research {
+  font-family: 'Lexend', sans-serif;
+}
+
+#stack {
+  font-family: 'Outfit', sans-serif;
+}
+
+#timeline {
+  font-family: 'Lexend', sans-serif;
+}
+
+.font-mono, pre, code {
+  font-family: 'Fira Code', monospace !important;
 }
 
 /* Custom scrollbar to keep details looking clean */
@@ -108,22 +143,27 @@ body {
     pointer-events: none;
     opacity: 0.5;
   }
-  
 }
 
 /* Color & Background Overrides for iOS Light Glassmorphic Style (Loaded last to beat Tailwind selectors) */
-.text-white {
-  color: #0F172A !important; /* Force slate-900 */
+/* Map all white and light text colors to clear slate-900 to prevent background blending */
+.text-white,
+.text-slate-50, .text-slate-100, .text-slate-200, .text-slate-300,
+.text-gray-50, .text-gray-100, .text-gray-200, .text-gray-300,
+.text-zinc-50, .text-zinc-100, .text-zinc-200, .text-zinc-300,
+.text-neutral-50, .text-neutral-100, .text-neutral-200, .text-neutral-300 {
+  color: #0F172A !important;
 }
-.text-slate-50, .text-slate-100 {
-  color: #1E293B !important; /* Force slate-800 */
+
+/* Map medium slate and text-muted to slate-800 to ensure perfect legibility */
+.text-slate-400, .text-slate-500,
+.text-gray-400, .text-gray-500,
+.text-zinc-400, .text-zinc-500,
+.text-neutral-400, .text-neutral-500,
+.text-text-muted {
+  color: #1E293B !important;
 }
-.text-slate-200, .text-slate-300 {
-  color: #334155 !important; /* Force slate-700 */
-}
-.text-slate-400 {
-  color: #475569 !important; /* Force slate-600 */
-}
+
 .bg-\[\#12141C\] {
   background: rgba(255, 255, 255, 0.35) !important;
   backdrop-filter: blur(16px) saturate(180%);
