@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Shield, Menu, X, FileText } from "lucide-react";
+import { Shield, Menu, X, FileText, Search } from "lucide-react";
 
 interface NavbarProps {
   recruiterMode: boolean;
   setRecruiterMode: (val: boolean) => void;
+  onSearchClick: () => void;
 }
 
-export default function Navbar({ recruiterMode, setRecruiterMode }: NavbarProps) {
+export default function Navbar({ recruiterMode, setRecruiterMode, onSearchClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -68,6 +69,15 @@ export default function Navbar({ recruiterMode, setRecruiterMode }: NavbarProps)
 
           {/* Recruiter Toggle & Action CTAs */}
           <div className="hidden md:flex items-center gap-4">
+            {/* Spotlight Search Toggle */}
+            <button
+              onClick={onSearchClick}
+              className="p-1.5 rounded border border-card-border bg-[#12141C] text-text-muted hover:text-slate-300 hover:border-slate-700 flex items-center justify-center transition-colors"
+              title="Search command palette (Ctrl+K)"
+            >
+              <Search className="w-3.5 h-3.5" />
+            </button>
+
             {/* Recruiter Switch */}
             <button
               onClick={() => setRecruiterMode(!recruiterMode)}
@@ -93,7 +103,14 @@ export default function Navbar({ recruiterMode, setRecruiterMode }: NavbarProps)
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={onSearchClick}
+              className="p-1.5 rounded border border-card-border bg-card-bg text-text-muted hover:text-white flex items-center justify-center"
+              title="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
             <button
               onClick={() => setRecruiterMode(!recruiterMode)}
               className={`p-1.5 rounded border ${

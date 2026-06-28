@@ -15,6 +15,7 @@ import RecruiterQuickMode from "@/components/RecruiterQuickMode";
 import { motion } from "framer-motion";
 import DocumentPreview from "@/components/DocumentPreview";
 import ControlCenter from "@/components/ControlCenter";
+import CommandPalette from "@/components/CommandPalette";
 
 export default function Home() {
   const [recruiterMode, setRecruiterMode] = useState(false);
@@ -23,6 +24,7 @@ export default function Home() {
   const [previewType, setPreviewType] = useState<"resume" | "paper" | null>(null);
   const [crtActive, setCrtActive] = useState(false);
   const [gridActive, setGridActive] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY, currentTarget } = e;
@@ -75,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
+      <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} onSearchClick={() => setSearchOpen(true)} />
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 space-y-20 relative z-10">
@@ -242,6 +244,23 @@ export default function Home() {
         setCrtActive={setCrtActive}
         gridActive={gridActive}
         setGridActive={setGridActive}
+      />
+
+      {/* Spotlight Command Search Palette */}
+      <CommandPalette
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        toggleSound={() => {
+          const isMuted = localStorage.getItem("ui_sound_muted") === "true";
+          localStorage.setItem("ui_sound_muted", String(!isMuted));
+        }}
+        toggleCrt={() => setCrtActive(!crtActive)}
+        toggleGrid={() => setGridActive(!gridActive)}
+        toggleRecruiterMode={() => setRecruiterMode(!recruiterMode)}
+        openDoc={(type) => {
+          setPreviewType(type);
+          setPreviewOpen(true);
+        }}
       />
     </div>
   );
