@@ -32,15 +32,10 @@ export default function TerminalDemo() {
   // Initial startup logs
   useEffect(() => {
     const startupSequence = [
-      { text: "ssh dev@piyush-infra.iiitd.net -p 22", type: "command" as const },
-      { text: "Connecting to remote GPU cluster: SUCCESS (Authorized)", type: "success" as const },
-      { text: "Initializing CUDA execution environment...", type: "info" as const },
-      { text: "Found GPU Device 0: NVIDIA A100-SXM4-40GB (Compute Capability 8.0)", type: "success" as const },
-      { text: "CUDA driver version: 12.4 | Runtime version: 12.4 | VRAM: 40960 MB", type: "info" as const },
-      { text: "Loading deep learning weight matrices to GPU RAM...", type: "info" as const },
-      { text: "Weights Loaded: DeepLOB (ONNX) + mDeBERTa-v3 (HuggingFace) [Total: 14.8 GB]", type: "success" as const },
-      { text: "Connecting local vector storage: ChromaDB [Port 8000]... connected", type: "success" as const },
-      { text: "Systems verified. Inference pool is active and listening on port 8080.", type: "success" as const },
+      { text: "systemctl status piyush-infra-node-01", type: "command" as const },
+      { text: "piyush-infra-node-01 // active & listening", type: "success" as const },
+      { text: "Hardware: NVIDIA A100 VRAM: 40GB | CUDA: 12.4", type: "info" as const },
+      { text: "Type 'help' to check available commands.", type: "info" as const },
     ];
 
     let timer = 0;

@@ -80,21 +80,21 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="lg:col-span-7 space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-card-border bg-[#12141C] text-[10px] font-mono text-accent-green tracking-wider uppercase shadow-md shadow-accent-green/5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-ping"></span>
-                systems_engineer_run // ACTIVE
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-card-border bg-card-bg/40 text-[10px] font-mono text-accent-blue tracking-wider uppercase shadow-md shadow-accent-blue/5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-ping"></span>
+                piyush_prashant // ACTIVE
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-extrabold tracking-tight text-white leading-[1.1]">
-                Building Production-Grade{" "}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-extrabold tracking-tight text-white leading-[1.15]">
+                Building{" "}
                 <span className="bg-gradient-to-r from-accent-blue via-accent-cyan to-accent-green bg-clip-text text-transparent">
-                  AI Systems
+                  High-Performance
                 </span>{" "}
-                for the Next Era of Computing
+                AI Systems
               </h1>
 
               <p className="text-sm sm:text-base text-text-muted font-mono leading-relaxed max-w-2xl">
-                B.Tech Data Science & AI honours student at IIIT Dharwad (expected May 2028). Specializes in low-latency C++ model inference engines, pgvector-based RAG caching systems, and XGBoost query routing.
+                B.Tech DSAI honours student at IIIT Dharwad. Specializing in low-latency C++ model inference, pgvector semantic caching, and intelligent query routing.
               </p>
 
               {/* Action Buttons */}
