@@ -13,10 +13,13 @@ import Timeline from "@/components/Timeline";
 import RecruiterQuickMode from "@/components/RecruiterQuickMode";
 
 import { motion } from "framer-motion";
+import DocumentPreview from "@/components/DocumentPreview";
 
 export default function Home() {
   const [recruiterMode, setRecruiterMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewType, setPreviewType] = useState<"resume" | "paper" | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY, currentTarget } = e;
@@ -45,10 +48,15 @@ export default function Home() {
   return (
     <div 
       onMouseMove={handleMouseMove}
-      className="min-h-screen bg-[#0B0C0E] text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white relative overflow-hidden"
+      className="min-h-screen relative overflow-hidden bg-transparent text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white"
     >
-      {/* Animated Fixed Cyber-Grid Background */}
-      <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-70" />
+      {/* Floating dynamic backdrop blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[650px] rounded-full bg-sky-200/45 blur-[100px] animate-blob pointer-events-none z-0" />
+      <div className="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] max-w-[550px] rounded-full bg-purple-200/45 blur-[100px] animate-blob animation-delay-2000 pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] left-[15%] w-[48vw] h-[48vw] max-w-[600px] rounded-full bg-rose-200/40 blur-[100px] animate-blob animation-delay-4000 pointer-events-none z-0" />
+
+      {/* Cyber grid lines overlay */}
+      <div className="absolute inset-0 cyber-grid pointer-events-none z-0 opacity-70" />
 
       {/* Dynamic Cursor Light Overlay */}
       <div 
@@ -108,20 +116,25 @@ export default function Home() {
                 </button>
 
                 <button
-                  onClick={(e) => handleScrollTo(e, "#research")}
+                  onClick={() => {
+                    setPreviewType("paper");
+                    setPreviewOpen(true);
+                  }}
                   className="px-5 py-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-white font-mono text-xs flex items-center gap-1.5 transition-colors"
                 >
                   <span>Read Research</span>
                 </button>
 
-                <a
-                  href="/Piyush_Prashant_Resume_Final.docx"
-                  download
+                <button
+                  onClick={() => {
+                    setPreviewType("resume");
+                    setPreviewOpen(true);
+                  }}
                   className="px-5 py-3 rounded border border-card-border hover:border-slate-700 bg-card-bg text-white font-mono text-xs flex items-center gap-1.5 transition-colors"
                 >
                   <FileText className="w-4 h-4 text-text-muted" />
                   <span>Resume (docx)</span>
-                </a>
+                </button>
 
                 <a
                   href="https://github.com/Piyu-cyber"
@@ -210,6 +223,13 @@ export default function Home() {
 
       {/* Systems Status Bar footer */}
       <StatusBar recruiterMode={recruiterMode} />
+
+      {/* Document slide-over lightbox previewer */}
+      <DocumentPreview 
+        isOpen={previewOpen} 
+        onClose={() => setPreviewOpen(false)} 
+        docType={previewType} 
+      />
     </div>
   );
 }
