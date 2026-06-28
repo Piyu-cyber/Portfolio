@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div 
       onMouseMove={handleMouseMove}
-      className="min-h-screen relative overflow-hidden bg-transparent text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white"
+      className="min-h-screen relative bg-transparent text-slate-100 flex flex-col selection:bg-accent-green/30 selection:text-white"
     >
       {/* Floating dynamic backdrop blobs */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[650px] rounded-full bg-sky-200/45 blur-[100px] animate-blob pointer-events-none z-0" />
