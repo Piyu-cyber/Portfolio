@@ -109,60 +109,60 @@ body {
     opacity: 0.5;
   }
   
-  /* Override Dark Theme Text Utility Classes for iOS Light Glassmorphic Style */
-  .text-white {
-    color: #0F172A !important; /* Force slate-900 */
-  }
-  .text-slate-100 {
-    color: #1E293B !important; /* Force slate-800 */
-  }
-  .text-slate-200 {
-    color: #334155 !important;
-  }
-  .text-slate-300 {
-    color: #334155 !important; /* Force slate-700 */
-  }
-  .text-slate-400 {
-    color: #475569 !important; /* Force slate-600 */
-  }
-  .bg-\[\#12141C\] {
-    background: rgba(255, 255, 255, 0.35) !important;
-    backdrop-filter: blur(16px) saturate(180%);
-    border-color: rgba(255, 255, 255, 0.45) !important;
-  }
-  .bg-\[\#0B0C0E\] {
-    background: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(16px) saturate(180%);
-    border-color: rgba(255, 255, 255, 0.45) !important;
-  }
-  .bg-\[\#12141C\]\/80 {
-    background: rgba(255, 255, 255, 0.35) !important;
-    backdrop-filter: blur(16px) saturate(180%);
-  }
-  .bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70 {
-    background: rgba(255, 255, 255, 0.3) !important;
-  }
-  .bg-\[\#12141C\]\/30 {
-    background: rgba(255, 255, 255, 0.25) !important;
-  }
-  .bg-card-bg {
-    background: rgba(255, 255, 255, 0.3) !important;
-  }
-  .border-card-border {
-    border-color: rgba(15, 23, 42, 0.06) !important;
-  }
-  
-  /* Keep text white on buttons and badges that have solid colored backgrounds */
-  button .text-white, 
-  a .text-white,
-  .bg-accent-blue .text-white,
-  .bg-accent-green .text-white,
-  .bg-accent-purple .text-white,
-  .bg-slate-900 .text-white,
-  button.text-white,
-  a.text-white,
-  .text-white.keep-white,
-  .bg-white .text-white {
-    color: #FFFFFF !important;
-  }
+}
+
+/* Color & Background Overrides for iOS Light Glassmorphic Style (Loaded last to beat Tailwind selectors) */
+.text-white {
+  color: #0F172A !important; /* Force slate-900 */
+}
+.text-slate-50, .text-slate-100 {
+  color: #1E293B !important; /* Force slate-800 */
+}
+.text-slate-200, .text-slate-300 {
+  color: #334155 !important; /* Force slate-700 */
+}
+.text-slate-400 {
+  color: #475569 !important; /* Force slate-600 */
+}
+.bg-\[\#12141C\] {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+.bg-\[\#0B0C0E\] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+.bg-\[\#12141C\]\/80 {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+}
+.bg-\[\#0B0C0E\]\/40, .bg-\[\#0B0C0E\]\/50, .bg-\[\#0B0C0E\]\/70 {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+.bg-\[\#12141C\]\/30 {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+.bg-card-bg {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+.border-card-border {
+  border-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Keep text white on buttons and badges that have solid colored backgrounds */
+button .text-white, 
+a .text-white,
+.bg-accent-blue .text-white,
+.bg-accent-green .text-white,
+.bg-accent-purple .text-white,
+.bg-slate-900 .text-white,
+button.text-white,
+a.text-white,
+.text-white.keep-white,
+.keep-white .text-white,
+.keep-white,
+.bg-white .text-white {
+  color: #FFFFFF !important;
 }
