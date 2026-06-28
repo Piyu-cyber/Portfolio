@@ -311,10 +311,9 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="space-y-4 font-mono text-xs text-slate-300 leading-relaxed">
-                    <div className="p-4 rounded border border-card-border bg-[#12141C]">
-                      <span className="text-accent-green font-bold">{"// Why This Matters:"}</span>
-                      <p className="mt-1 text-slate-400">
-                        Standard natural language database queries consume significant API token fees and suffer from high execution latencies (typically 4s+ per LLM query). DataChat solves this by introducing pgvector schema matching + an intelligent semantic cache.
+                    <div className="p-3 rounded border border-card-border bg-[#12141C]">
+                      <p className="text-[11px] text-slate-400">
+                        <strong className="text-accent-green">Problem:</strong> Standard RAG queries suffer from high LLM token costs and execution latencies (4s+). <strong className="text-white">Solution:</strong> Implemented pgvector schema matching and similarity-based query semantic caching to solve this bottleneck.
                       </p>
                     </div>
 
@@ -334,13 +333,13 @@ export default function ProjectsSection() {
                     </div>
 
                     <div>
-                      <h4 className="text-white font-bold mb-2">&gt; Engineering Challenges:</h4>
-                      <ul className="list-disc pl-4 space-y-2 text-slate-400 text-[11px]">
+                      <h4 className="text-white font-bold mb-1">&gt; Engineering Challenges:</h4>
+                      <ul className="list-disc pl-4 space-y-1.5 text-slate-400 text-[11px]">
                         <li>
-                          <strong className="text-white">Semantic Cache Tuning:</strong> Developed Cosine-distance threshold parameters in Supabase pgvector to balance cache-hit accuracy against hallucinated answers.
+                          <strong className="text-white">Cache Tuning:</strong> Built Cosine-similarity threshold controls in Supabase pgvector to eliminate hallucinated hits.
                         </li>
                         <li>
-                          <strong className="text-white">High-Speed Context Generation:</strong> Pre-embedded database schemas, utilizing schema layout structure mapping to minimize context lengths passed to Groq Llama-3, achieving sub-500ms SQL generation times.
+                          <strong className="text-white">Sub-500ms SQL Compile:</strong> Pre-embedded database schema layouts to minimize Llama-3 context sizes.
                         </li>
                       </ul>
                     </div>
@@ -381,10 +380,9 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="space-y-4 font-mono text-xs text-slate-300 leading-relaxed">
-                    <div className="p-4 rounded border border-card-border bg-[#12141C]">
-                      <span className="text-accent-blue font-bold">{"// Why This Matters:"}</span>
-                      <p className="mt-1 text-slate-400">
-                        Python-based deep learning inference contains critical Global Interpreter Lock (GIL) and runtime overheads, rendering models unusable in sub-millisecond trading architectures. Compiling and running model inference directly in C++ via ONNX Runtime resolves this bottleneck.
+                    <div className="p-3 rounded border border-card-border bg-[#12141C]">
+                      <p className="text-[11px] text-slate-400">
+                        <strong className="text-accent-blue">Problem:</strong> Python DL model inference carries high GIL & runtime latency overheads, making it unsuitable for HFT. <strong className="text-white">Solution:</strong> Compiled model graphs to C++ via ONNX Runtime to execute on GPU.
                       </p>
                     </div>
 
@@ -404,13 +402,13 @@ export default function ProjectsSection() {
                     </div>
 
                     <div>
-                      <h4 className="text-white font-bold mb-2">&gt; Engineering Challenges:</h4>
-                      <ul className="list-disc pl-4 space-y-2 text-slate-400 text-[11px]">
+                      <h4 className="text-white font-bold mb-1">&gt; Engineering Challenges:</h4>
+                      <ul className="list-disc pl-4 space-y-1.5 text-slate-400 text-[11px]">
                         <li>
-                          <strong className="text-white">Zero-Leak Data Preprocessing:</strong> Engineered sliding window sequence slicing (100 sequential timestamps across 40 features) without overlap leaks.
+                          <strong className="text-white">Zero-Leak Preprocessing:</strong> Engineered sliding window sequence slicing across 40 features with zero lookahead leak.
                         </li>
                         <li>
-                          <strong className="text-white">Low-Latency Memory Mapping:</strong> Integrated optimized CPU/GPU buffer exchanges and dynamic tensor shape allocation using standard C++ templates.
+                          <strong className="text-white">GPU Memory Mapping:</strong> Integrated optimized CPU/GPU buffer exchanges using C++ templates.
                         </li>
                       </ul>
                     </div>
@@ -451,10 +449,9 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="space-y-4 font-mono text-xs text-slate-300 leading-relaxed">
-                    <div className="p-4 rounded border border-card-border bg-[#12141C]">
-                      <span className="text-accent-purple font-bold">{"// Why This Matters:"}</span>
-                      <p className="mt-1 text-slate-400">
-                        Hybrid architectures combining relational tables with complex graph databases (e.g. Neo4j) lack automatic query translation interfaces. HIFUN utilizes high-speed ML routers to parse DSL input and execute queries on the optimal backend automatically.
+                    <div className="p-3 rounded border border-card-border bg-[#12141C]">
+                      <p className="text-[11px] text-slate-400">
+                        <strong className="text-accent-purple">Problem:</strong> Hybrid database setups combining relational SQL & Graph backends lack unified routing, requiring manual queries. <strong className="text-white">Solution:</strong> Designed a fast XGBoost query router to automatically classify & route requests.
                       </p>
                     </div>
 
@@ -474,13 +471,13 @@ export default function ProjectsSection() {
                     </div>
 
                     <div>
-                      <h4 className="text-white font-bold mb-2">&gt; Engineering Challenges:</h4>
-                      <ul className="list-disc pl-4 space-y-2 text-slate-400 text-[11px]">
+                      <h4 className="text-white font-bold mb-1">&gt; Engineering Challenges:</h4>
+                      <ul className="list-disc pl-4 space-y-1.5 text-slate-400 text-[11px]">
                         <li>
-                          <strong className="text-white">Lexical Feature Extraction:</strong> Implemented light, regex-free NLP feature tokens in query strings to build highly compact tabular dataset training vectors.
+                          <strong className="text-white">Lexical Tokenizer:</strong> Implemented lightweight query string NLP feature mappings to keep training vectors compact and fast.
                         </li>
                         <li>
-                          <strong className="text-white">SHAP-based Transparency:</strong> Embedded SHAP values directly inside query outputs to give systems managers real-time insights into model routing logic.
+                          <strong className="text-white">Explainability:</strong> Integrated SHAP calculations in system dashboards for real-time model auditing.
                         </li>
                       </ul>
                     </div>

@@ -107,7 +107,7 @@ export default function ResearchLab() {
               <div>
                 <span className="text-accent-purple font-bold block mb-1 uppercase tracking-wide text-[10px]">{"// Research Overview:"}</span>
                 <p className="text-slate-400 leading-relaxed text-[11px]">
-                  Multilingual polarization detection suffers from heavy syntax variations and cross-lingual representation drift. This work fine-tunes mDeBERTa-v3-base and XLM-RoBERTa-large via 4-bit Parameter-Efficient QLoRA. The dual encoders feed outputs into an XGBoost meta-classifier stacked with a Shannon entropy routing mechanism to dynamically route predictions to expert nodes.
+                  Cross-lingual polarization classification suffers from significant semantic shift. We fine-tuned mDeBERTa-v3 and XLM-RoBERTa-large via 4-bit QLoRA, stacking their predictions with an XGBoost classifier and applying Shannon entropy thresholds for dynamic routing.
                 </p>
               </div>
 
@@ -121,15 +121,15 @@ export default function ResearchLab() {
                   <div className="space-y-2 text-[10px] leading-relaxed text-slate-400">
                     <div className="flex items-start gap-1.5">
                       <span className="text-accent-green">✔</span>
-                      <span><strong className="text-white">QLoRA Alignment:</strong> Fine-tuned embedding matrices across 22 languages simultaneously using single GPU setups, maintaining mathematical representation mapping.</span>
+                      <span><strong className="text-white">4-bit QLoRA:</strong> Co-trained dual models across 22 languages on a single GPU.</span>
                     </div>
                     <div className="flex items-start gap-1.5">
                       <span className="text-accent-green">✔</span>
-                      <span><strong className="text-white">Entropy-Based Routing:</strong> Shannon entropy serves as a metric threshold to dynamically bypass the stack and route simple query inputs directly, saving 35% computation.</span>
+                      <span><strong className="text-white">Entropy Routing:</strong> Used Shannon entropy metrics to route simple inputs directly, reducing compute overhead by 35%.</span>
                     </div>
                     <div className="flex items-start gap-1.5">
                       <span className="text-accent-green">✔</span>
-                      <span><strong className="text-white">Expert Meta-Classifier:</strong> Blended mDeBERTa-v3 and XLM-R models via XGBoost meta-stacking to resolve model-specific bias profiles.</span>
+                      <span><strong className="text-white">XGBoost Stacking:</strong> Blended base dual-encoders to mitigate model-specific classification bias.</span>
                     </div>
                   </div>
                 </div>

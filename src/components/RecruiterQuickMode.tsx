@@ -48,7 +48,7 @@ export default function RecruiterQuickMode() {
               {"// Essential Profile Summary:"}
             </span>
             <p className="text-[11px] leading-relaxed text-slate-400">
-              B.Tech Data Science & AI student at IIIT Dharwad (expected May 2028). Strong systems engineering portfolio with peer-reviewed NLP paper published in ACL SemEval-2026. Specialized in low-latency C++ ONNX model inference pipelines, vector-embedded pgvector RAG databases with semantic caching, and XGBoost-based intelligent system query routers.
+              B.Tech Data Science & AI honours student at IIIT Dharwad (expected May 2028) & ACL SemEval-2026 co-author. Builds high-performance C++ inference pipelines (ONNX Runtime, 1.75x speedup), pgvector-based RAG query semantic caches (60% API cost reduction), and XGBoost intelligent system query routers (97.3% F1).
             </p>
           </div>
 
